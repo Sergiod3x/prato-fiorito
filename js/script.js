@@ -82,14 +82,14 @@ for (var z = 0; z < checkClick.length; z++) {
     console.log(checkClick[z]);
     checkClick[z].onclick = function () {
 
-        //COSA VERRà ESEGUITO AL CLICK
+        //10 righe e 10 colonne vengono trattate come 100 cellete di seguito, delimitate dalla prima e dall'ultima colonna con i valori limite 1-10; 11-20; 21-30; 31-40 ecc 
         var w = parseInt(this.value);
         var proximityZone = [w - 11, w - 10, w - 9, w - 1, w + 1, w + 9, w + 10, w + 11];
         var lastColumn = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
         var firstColumn = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91];
 
 
-        var distance = 0;
+        var adjacent = 0;
 
         if (mine.includes(w)) {
 
@@ -105,21 +105,22 @@ for (var z = 0; z < checkClick.length; z++) {
         else {
             for (var p = 0; p < proximityZone.length; p++) {
                 if (mine.includes(proximityZone[p])) {
+                    //devo evitare che la prima e l'ultima colonna vengano trattate come adiacenti
                     if ((lastColumn.includes(proximityZone[p]) && firstColumn.includes(w)) || (firstColumn.includes(proximityZone[p]) && lastColumn.includes(w))) { } else {
-                        distance = distance + 1;
+                        adjacent = adjacent + 1;
                     }
                 }
             }
 
-            if (distance < 1) {
+            if (adjacent < 1) {
                 this.parentNode.classList.add("color-yellow");
                 this.style.display = "none";
                 points = points + 1;
 
 
-            } else if (distance > 0 && distance < 8) {
+            } else if (adjacent > 0 && adjacent < 8) {
                 this.parentNode.classList.add("color-yellow");
-                this.parentNode.innerHTML = distance;
+                this.parentNode.innerHTML = adjacent;
                 points = points + 1;
             }
         }
