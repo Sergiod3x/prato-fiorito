@@ -101,6 +101,7 @@ for (var z = 0; z < checkClick.length; z++) {
                 checkClick[r].style.display = "none";
             }
             alert('HAI PERSO!!!');
+            RefreshWindow();
         }
         else {
             for (var p = 0; p < proximityZone.length; p++) {
@@ -127,6 +128,7 @@ for (var z = 0; z < checkClick.length; z++) {
         outPoints.innerHTML = points;
         if (points === (100 - numberMine)) {
             alert('HAI VINTO!');
+            // RefreshWindow();
         }
         sessionStorage.setItem("oldPoints", points);
 
