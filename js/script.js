@@ -106,7 +106,7 @@ for (var z = 0; z < checkClick.length; z++) {
             for (var p = 0; p < proximityZone.length; p++) {
                 if (mine.includes(proximityZone[p])) {
                     //devo evitare che la prima e l'ultima colonna vengano trattate come adiacenti
-                    if ((lastColumn.includes(proximityZone[p]) && firstColumn.includes(w)) || (firstColumn.includes(proximityZone[p]) && lastColumn.includes(w))) { } else {
+                    if (!((lastColumn.includes(proximityZone[p]) && firstColumn.includes(w))) && !((firstColumn.includes(proximityZone[p]) && lastColumn.includes(w)))) {
                         adjacent = adjacent + 1;
                     }
                 }
