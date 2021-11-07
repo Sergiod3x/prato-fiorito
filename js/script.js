@@ -10,9 +10,8 @@ var numberMine;
 var points = 0;
 var oldPoints = 0;
 
-function RefreshWindow()
-{
-         window.location.reload(true);
+function RefreshWindow() {
+    window.location.reload(true);
 }
 
 function undermine() {
@@ -28,7 +27,7 @@ function undermine() {
         }
         mine.push(mina);
     }
-    
+
 }
 
 //INIZIO
@@ -41,10 +40,10 @@ if (isNaN(sessionStorage.getItem("oldPoints")) || sessionStorage.getItem("oldPoi
 
 outPoints.innerHTML += points;
 //Controllo che venga inserito uno dei tre livelli di dificioltà disponibili
-while ((difficulty != "FACILE") && (difficulty != "MEDIA") && (difficulty != "DIFFICILE")&&(difficulty!="")) {
+while ((difficulty != "FACILE") && (difficulty != "MEDIA") && (difficulty != "DIFFICILE") && (difficulty != "")) {
     alert("Scegli uno dei tre livelli di difficoltà tra Facile, Medio e Difficile ");
     difficulty = (prompt('Con quale difficoltà vuoi giocare: Facile, Media, Difficile?')).toUpperCase();
-    
+
 }
 
 // CREO LE MINE IN BASE ALLA DIFFICOLTA SCELTA DALL'UTTENTE.
@@ -52,15 +51,15 @@ switch (difficulty) {
     case "Facile":
         numberMine = 16;
         break;
-        case "Media":
-            numberMine = 32;
-            break;
+    case "Media":
+        numberMine = 32;
+        break;
     case "Difficile":
         numberMine = 64;
         break;
-        default:
-            numberMine = 16;
-        }
+    default:
+        numberMine = 16;
+}
 outNumberMine.innerHTML += numberMine;
 
 undermine();
@@ -86,8 +85,8 @@ for (var z = 0; z < checkClick.length; z++) {
         //COSA VERRà ESEGUITO AL CLICK
         var w = parseInt(this.value);
         var proximityZone = [w - 11, w - 10, w - 9, w - 1, w + 1, w + 9, w + 10, w + 11];
-        var firstColumn = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-        var lastColun = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91];
+        var lastColumn = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+        var firstColumn = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91];
 
 
         var distance = 0;
@@ -106,7 +105,7 @@ for (var z = 0; z < checkClick.length; z++) {
         else {
             for (var p = 0; p < proximityZone.length; p++) {
                 if (mine.includes(proximityZone[p])) {
-                    if ((firstColumn.includes(proximityZone[p]) && lastColun.includes(w)) || (lastColun.includes(proximityZone[p]) && firstColumn.includes(w))) { } else {
+                    if ((lastColumn.includes(proximityZone[p]) && firstColumn.includes(w)) || (firstColumn.includes(proximityZone[p]) && lastColumn.includes(w))) { } else {
                         distance = distance + 1;
                     }
                 }
