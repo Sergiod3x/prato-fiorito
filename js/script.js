@@ -100,7 +100,8 @@ for (var z = 0; z < checkClick.length; z++) {
                 checkClick[r].style.display = "none";
             }
             alert('HAI PERSO!!!');
-            RefreshWindow();
+            setTimeout(function(){ RefreshWindow(); }, 10000);
+        
         }
         else {
             for (var p = 0; p < proximityZone.length; p++) {
